@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!-- ng-app loads ng-module which brings with it directives such as ng-hide. It is also a directive which initializes our angularJS application -->
+<html lang="en" ng-app>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Angular Hide</title>
+  <script src="angularMC.js"></script>
+</head>
+<body>
+
+  <!-- ng-hide is a directive, it's giving an order (a directive) to this element to hide -->
+  <p id="para" ng-hide="true">I am para!</p>
+  <!-- This is expressive code, we see what is happening to this paragraph right at the paragraph element. -->
+  <!-- where is this directive's DOM manipulation code? for hiding? It is loaded with ng-app directive in the top html element -->
+
+</body>
+</html>

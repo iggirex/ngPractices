@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jQuery Hide</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- need to add id to paragraph to be able to handle it with jQuery -->
+  <!-- problem: this element itself gives no clue that we want to hide it, code for that is elsewhere in document -->
+  <p id="para">I am para!</p>
+
+  <script>
+    // neet to write jquery seperately in the file to handle to HTML element
+    $("#para").hide();
+    //if this code is written in a different file, you might not be able to tell what it's affecting
+  </script>
+
+</body>
+</html>
