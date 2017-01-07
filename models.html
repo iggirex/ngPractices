@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!-- Angular controls where ever you declare ng-app. In this case, we want the whole html document -->
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Angular Module</title>
+  <script src="angularMC.js"></script>
+  <script>
+    var app = angular.module("myApp", [])
+      app.controller("AppCtrl", function(){
+        this.employee = {
+          firstName: "Sandip",
+          lastName: "Gautam",
+          occupation: "Web Developer"
+        };
+      })
+  </script>
+</head>
+<body ng-controller="AppCtrl as app">
+  <!-- Double curly braces help us to access the MODEL => data in our controller -->
+  {{app.employee.firstName + " " + app.employee.lastName + " " + app.employee.occupation}}
+  <!-- POJO => using Plain Old Javascript Objects to access data inside our controller -->
+</body>
+</html>
