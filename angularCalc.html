@@ -1,25 +1,42 @@
 <!DOCTYPE html>
+
 <!-- Angular controls where ever you declare ng-app. In this case, we want the whole html document -->
 <html lang="en" ng-app="myApp">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Angular Module</title>
+  <title>Angular Calculator</title>
   <script src="angularMC.js"></script>
-</head>
-<body>
-
 
   <script>
-  //we angular module inside IIFE for protective scope
-    (function() {
-      var name = "myApp",
-          requires = [];
-      var myApp = angular.module(name, requires);
-    })
-    //var myApp = angular.module("myApp", []);
-    console.log(angular.module("myApp");
+    var app = angular.module("myApp", [])
+    //this connects our view (HTML, Directives to our Controller)
+      app.controller("AppCtrl", function(){
+        // this function in our controller will contain the business logic for the app
+        this.calculate = function(firstNum, secondNum){
+          this.result = parseInt(firstNum) + parseInt(secondNum);
+        }
+      })
   </script>
+</head>
+
+<!-- here we want to associate our controller with the element it will be responsible for handling, so we give it the name of controller we've made -->
+<body ng-controller="AppCtrl as app">
+  <!-- as app helps with calling methods in our controller from directives. Leaving out alias and i can't grab the controller methods. -->
+
+  <h1>Addition of Two Numbers</h1>
+
+  First Number: <input type="text" id="firstNumInput" ng-model="app.firstNum"/> </br>
+  Second Number: <input type="text" id="secondNumInput" ng-model="app.secondNum"/> </br>
+
+  <!-- to call controller function when button is clicked we add a directive -->
+  <button id="calculateBtn" ng-click="app.calculate(app.firstNum, app.secondNum)">Calculate!</button> </br>
+  <!-- here, we use the directive ng-click to send the user interaction to our controller. We are calling the "AppCtrl as app" controller and using its calculate function, hence this.calculate in the controller -->
+
+<!-- ng-bind ties our HTML value to variables in our controller, here this.result in AppCtrl as app -->
+  Result: <p id="result" ng-bind="app.result"></p>
+
 </body>
 </html>
