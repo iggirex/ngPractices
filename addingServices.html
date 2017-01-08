@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Angular Services</title>
+  <script src="angularMC.js"></script>
+</head>
+<body ng-controller="AppCtrl as app">
+  <h1>Addition of two numbers</h1>
+
+  First Number: <input type="text" ng-model="app.firstNum"> </br>
+  Second Number: <input type="text" ng-model="app.secondNum"> </br>
+  Option: <button ng-click="app.setOperation('+')">Add</button>
+          <button ng-click="app.setOperation('-')">Subtract</button> </br>
+
+  <button id="calculateBtn" ng-click="app.calculate(app.firstNum, app.secondNum)">Calculate!</button> </br>
+
+  Result: <p ng-bind="app.result"></p>
+
+  <script>
+    var app = angular.module("myApp", [])
+
+    app.service("addSvc", function(){
+      this.add = function(firstNum, secondNum){
+        return parseInt(firstNum) + parseInt(secondNum);
+      }
+    });
+
+    app.service("subtractSvc", function(){
+      this.subtract = function(firstNum, secondNum){
+        return parseInt(firstNum) - parseInt(secondNum);
+      }
+    });
+    //inject addService into our controller function
+    app.controller("AppCtrl", function(addSvc, subtractSvc){
+      this.setOperation = function(operator){
+        console.log(operator)
+        this.operator = operator;
+      }
+      this.calculate = function(firstNum, secondNum){
+        console.log("calcing", this.operator)
+        if(this.operator === "+"){
+          this.result = addSvc.add(firstNum, secondNum);
+          console.log("this.result= ", this.result)
+        }else if(this.operator === "-"){
+          this.result = subtractSvc.subtract(firstNum, secondNum);
+        }
+      }
+
+    })
+  </script>
+
+</body>
+</html>

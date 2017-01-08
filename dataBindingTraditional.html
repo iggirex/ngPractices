@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Traditional Data Binding</title>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+  <h1>Data Binding - Traditional Way</h1>
+
+  Task: <span id="task">Example Task</span> </br>
+  Done: <input type="checkbox" id="statusCheck" />
+
+  <script>
+    var taskData;
+
+    function init() {
+      taskData = {
+        task: "Deep Dive & Understand AngularJS",
+        status: true
+      }
+      render();
+
+      $("statusCheck").on("change", onStatusChange);
+    }
+
+    function render() {
+      $("#task").html(taskData.task);
+      $("#statusCheck").attr("checked", taskData.status);
+    }
+
+    init();
+
+    function onStatusChange(){
+      console.log("something")
+      var checked = $("#statusCheck").is(":checked");
+      console.log("status checked : " + checked);
+    }
+
+  </script>
+
+</body>
+</html>

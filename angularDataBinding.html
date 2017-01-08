@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Angular Data Binding</title>
+  <script src="angularMC.js"></script>
+
+</head>
+<body ng-controller="AppCtrl">
+  <h1>Data Binding - Angular Way</h1>
+
+  Task: <span id="task">{{taskData.task}}</span> </br>
+  Done: <input type="checkbox" ng-model="taskData.status" ng-click="onStatusClick()"/>
+  <button ng-click="alert()">alert</button>
+
+  <script>
+    var taskData = {
+      task: "Deep Dive",
+      status: true
+    }
+    var app = angular.module("myApp", [])
+    app.controller("AppCtrl", function($scope){
+      $scope.taskData = taskData;
+      $scope.onStatusClick = function(){
+        console.log("status : ", taskData.status);
+      }
+      $scope.alert = function(){
+        alert("hey");
+      }
+    });
+  </script>
+</body>
+</html>

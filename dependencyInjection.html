@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- Angular controls where ever you declare ng-app. In this case, we want the whole html document -->
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Angular Module</title>
+  <script src="angularMC.js"></script>
+</head>
+<body>
+
+
+  <script>
+    var SecurityPerson = function() {
+      this.takecare = function(){
+        console.log("taking care!")
+      }
+    }
+    var apartment = function(person){
+      //var person = new SecurityPerson();
+      person.takecare();
+    }
+    apartment();
+
+    var app = angular.module("myApp", [])
+    app.controller("myCtrl", function(){
+
+    })
+  </script>
+</body>
+</html>
